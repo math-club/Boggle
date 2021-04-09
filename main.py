@@ -1,8 +1,10 @@
 
-from itertools import islice
+import itertools
+import random
 from typing import Iterable
 
 from conf import Conf
+from utils import chunked
 
 
 DICES: tuple[tuple[str]] = (
@@ -32,13 +34,13 @@ def get_words() -> Iterable[str]:
     words = (line.strip()
                  for line in iter(words_list))
 
-    return islice(words, 1, None)
+    return itertools.islice(words, 1, None)
 
 
 def point_count(word: str) -> int:
     """Returns an int representing the point value of the given word."""
     letters_point: dict[int, int] = {
-        3: 1
+        3: 1,
         4: 1,
         5: 2,
         6: 3,
@@ -47,7 +49,17 @@ def point_count(word: str) -> int:
     }
     word_length = len(word)
 
-    if (points := letters_point.get(word_length):
+    if (points := letters_point.get(word_length)):
         return points
     else:
         return 0 if word_length < 3 else 11
+
+
+def grid() -> tuple[tuple[str]]:
+    """Returns a tuple of four tuples containing the random result of a
+    dice roll.
+    """
+    dices_result: tuple[str] = tuple(random.choice(dices)
+                                         for dices in DICES)
+
+    return tuple(chunked(dices_result, 4))
