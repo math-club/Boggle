@@ -33,3 +33,21 @@ def get_words() -> Iterable[str]:
                  for line in iter(words_list))
 
     return islice(words, 1, None)
+
+
+def point_count(word: str) -> int:
+    """Returns an int representing the point value of the given word."""
+    letters_point: dict[int, int] = {
+        3: 1
+        4: 1,
+        5: 2,
+        6: 3,
+        7: 5,
+        8: 11
+    }
+    word_length = len(word)
+
+    if (points := letters_point.get(word_length):
+        return points
+    else:
+        return 0 if word_length < 3 else 11
