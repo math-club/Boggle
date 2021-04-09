@@ -1,7 +1,7 @@
 
 import itertools
 import random
-from typing import Iterable
+from typing import Iterable, NoReturn
 
 from conf import Conf
 from utils import chunked
@@ -39,14 +39,6 @@ def get_words() -> Iterable[str]:
 
 def point_count(word: str) -> int:
     """Returns an int representing the point value of the given word."""
-    letters_point: dict[int, int] = {
-        3: 1,
-        4: 1,
-        5: 2,
-        6: 3,
-        7: 5,
-        8: 11
-    }
     word_length = len(word)
 
     if (points := letters_point.get(word_length)):
@@ -63,3 +55,10 @@ def grid() -> tuple[tuple[str]]:
                                          for dices in DICES)
 
     return tuple(chunked(dices_result, 4))
+
+
+def pretty_printer(grid: tuple[tuple]) -> NoReturn:
+    print("\n".join(" ".join(line) for line in grid))
+
+
+pretty_printer(grid())
