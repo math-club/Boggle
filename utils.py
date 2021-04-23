@@ -11,4 +11,4 @@ def chunked(seq: Sequence[T],
     bundles.
     """
     return (seq[chunk:chunk + n]
-                for chunk in range(0, len(seq), n))
+            for chunk in range(0, len(seq), n))
