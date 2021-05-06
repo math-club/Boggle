@@ -1,9 +1,2 @@
 
-tim: 10
-beta: 2
-tim: 10
-beta: 2
-Tim: 1
-tim: 2
-yu: 1
-natnat: 10
+

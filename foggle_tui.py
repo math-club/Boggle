@@ -1,4 +1,4 @@
-# main.py
+# boggle_tui.py
 
 from src.ui import Interface
 

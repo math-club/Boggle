@@ -25,8 +25,9 @@ def chunked(seq: Sequence, n: int) -> Iterable:
 
 
 def pretty_print(letters: str) -> NoReturn:
-    """Pretty print given letter as grid form."""
+    """Returns printable string with given letter as grid form."""
+    pretty_string = ""
     for line in chunked(letters, 4):
-        for char in line:
-            print(char, end=" ")
-        print()
+        pretty_string += " ".join(char for char in line)
+        pretty_string += "\n"
+    return pretty_string

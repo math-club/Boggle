@@ -20,10 +20,16 @@ class Timer:
     def __exit__(self, *_):
         pass
 
+    def time_elapsed(self):
+        """Return the current timer
+        """
+        return time.time() - self.start
+
     def is_finished(self) -> bool:
-        """Return true if timer is finished. False otherwise."""
-        time_elapsed = time.time()
-        return time_elapsed > self.start + self.nb_seconds
+        """Return true if timer is finished. False otherwise.
+        If force is True, then the timer end automaticaly.
+        """
+        return self.time_elapsed() > self.nb_seconds
 
 
 class Interface:
@@ -35,7 +41,7 @@ class Interface:
 
     def show_grid(self):
         print("Grille de Boggle :")
-        pretty_print(self.board.letters)
+        print(pretty_print(self.board.letters))
 
     def is_valid(self, word: str) -> bool:
         return (Word.is_in_board(word, self.board)
