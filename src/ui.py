@@ -57,6 +57,14 @@ class Interface:
             while not t.is_finished():
                 word = self.get_user_input()
 
+                try:
+                    int(word.replace(" ", ""))
+                    is_coord = True
+                except ValueError:
+                    is_coord = False
+
+                if is_coord:
+                    word = Word.positions_forms_word(word, self.board)
                 if self.is_valid(word):
                     if word in finden_words:
                         print("Mot déjà trouvé !")
@@ -69,7 +77,8 @@ class Interface:
                         score += word_point
                 else:
                     print("  Ce mot ne peut pas être composé avec les lettres "
-                          "de la grille ou n'est pas dans le dictionnaire du scrabble !")
+                        "de la grille ou n'est pas dans le dictionnaire du scrabble !")
+
 
         print("Le temps est écoulé !", end="\n"*2)
 

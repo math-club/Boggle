@@ -3,7 +3,7 @@
 import random
 from typing import Tuple
 
-from .utils import chunked
+from src.utils import chunked
 
 
 class BoggleBoard:
