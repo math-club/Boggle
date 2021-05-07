@@ -102,7 +102,7 @@ class Word:
         False else.
         raw_input exemple: "00 01 12 13 23"
         """
-        
+
         str_coordinates = tuple(raw_input.strip().strip("\n").split(" "))
         for coord in str_coordinates:
             if len(coord) != 2:
